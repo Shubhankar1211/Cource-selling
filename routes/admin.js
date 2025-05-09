@@ -2,9 +2,9 @@ const { Router } = require("express");
 const adminRouter = Router();
 const { adminModel } = require("../db")
 const jwt = require("jsonwebtoken")
-const JWT_ADMIN_SECRET = "shubhankar"
 const bcrypt = require("bcrypt")
 const { zod } = require("zod");
+const {JWT_ADMIN_SECRET} = require("../config")
 
 adminRouter.use(require("express").json()); 
 
@@ -63,7 +63,7 @@ adminRouter.post("/signin", async function (req, res) {
 
 
 
-adminRouter.post("/", function (req, res) {
+adminRouter.post("/course", function (req, res) {
 
 })
 
@@ -71,11 +71,11 @@ adminRouter.delete("/deletecourse", function (req, res) {
 
 })
 
-adminRouter.put("/", function (req, res) {
+adminRouter.put("/course", function (req, res) {
 
 })
 
-adminRouter.get("/", function (req, res) {
+adminRouter.get("/course/bulk", function (req, res) {
 
 })
 

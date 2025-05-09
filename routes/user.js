@@ -2,13 +2,14 @@ const { Router } = require("express");
 const userRouter = Router();
 const { userModel } = require("../db");
 const jwt = require("jsonwebtoken");
-const JWT_USER_SECRET = "shubhankarchauhan";
 const bcrypt = require("bcrypt");
 const { zod } = require("zod"); 
+const { JWT_USER_SECRET } = require("../config")
 
 userRouter.use(require("express").json());
 
 userRouter.post("/signup",async function(req,res){
+    // todo add zod
     const email = req.body.email
     const password = req.body.password
     const firstName = req.body.firstName
@@ -18,6 +19,7 @@ userRouter.post("/signup",async function(req,res){
    const hashedUserPassword = await bcrypt.hash(password,10) 
    console.log(hashedUserPassword)
 
+   // todo: put try/catch
     await userModel.create({
         email: email,
         password: hashedUserPassword,
